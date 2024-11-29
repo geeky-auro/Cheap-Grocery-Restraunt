@@ -3030,7 +3030,21 @@ const Header = ()=>{
     }, undefined);
 };
 _c = Header;
-const RestrauntCard = ({ ...rest })=>{
+// const RestrauntCard = ({ ...rest }) => {
+//   return (
+//     <div className="res-card" style={styleCard}>
+//       <img
+//         className="some-image"
+//         src="https://img.freepik.com/free-vector/detailed-chef-logo-template_23-2148986823.jpg"
+//       />
+//       <h3>{rest.name}</h3>
+//       <h4>Cuisines : {rest.cuisines}</h4>
+//       <h4>Ratings : {rest.ratings} 💫</h4>
+//       <h4>{rest.time} Minutes</h4>
+//     </div>
+//   );
+// };
+const RestrauntCard = (props)=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "res-card",
         style: styleCard,
@@ -3040,51 +3054,51 @@ const RestrauntCard = ({ ...rest })=>{
                 src: "https://img.freepik.com/free-vector/detailed-chef-logo-template_23-2148986823.jpg"
             }, void 0, false, {
                 fileName: "index.js",
-                lineNumber: 32,
+                lineNumber: 50,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                children: rest.name
+                children: props.name
             }, void 0, false, {
                 fileName: "index.js",
-                lineNumber: 36,
+                lineNumber: 54,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
                 children: [
                     "Cuisines : ",
-                    rest.cuisines
+                    props.cuisines
                 ]
             }, void 0, true, {
                 fileName: "index.js",
-                lineNumber: 37,
+                lineNumber: 55,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
                 children: [
                     "Ratings : ",
-                    rest.ratings,
+                    props.ratings,
                     " \uD83D\uDCAB"
                 ]
             }, void 0, true, {
                 fileName: "index.js",
-                lineNumber: 38,
+                lineNumber: 56,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
                 children: [
-                    rest.time,
+                    props.time,
                     " Minutes"
                 ]
             }, void 0, true, {
                 fileName: "index.js",
-                lineNumber: 39,
+                lineNumber: 57,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "index.js",
-        lineNumber: 31,
+        lineNumber: 49,
         columnNumber: 5
     }, undefined);
 };
@@ -3098,7 +3112,7 @@ const Body = ()=>{
                 children: "Search"
             }, void 0, false, {
                 fileName: "index.js",
-                lineNumber: 47,
+                lineNumber: 65,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -3111,7 +3125,7 @@ const Body = ()=>{
                         time: 30
                     }, void 0, false, {
                         fileName: "index.js",
-                        lineNumber: 49,
+                        lineNumber: 67,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
@@ -3121,7 +3135,7 @@ const Body = ()=>{
                         time: 38
                     }, void 0, false, {
                         fileName: "index.js",
-                        lineNumber: 55,
+                        lineNumber: 73,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
@@ -3131,7 +3145,7 @@ const Body = ()=>{
                         time: 27
                     }, void 0, false, {
                         fileName: "index.js",
-                        lineNumber: 61,
+                        lineNumber: 79,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
@@ -3141,7 +3155,7 @@ const Body = ()=>{
                         time: 16
                     }, void 0, false, {
                         fileName: "index.js",
-                        lineNumber: 67,
+                        lineNumber: 85,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
@@ -3151,7 +3165,7 @@ const Body = ()=>{
                         time: 40
                     }, void 0, false, {
                         fileName: "index.js",
-                        lineNumber: 73,
+                        lineNumber: 91,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
@@ -3161,7 +3175,7 @@ const Body = ()=>{
                         time: 45
                     }, void 0, false, {
                         fileName: "index.js",
-                        lineNumber: 79,
+                        lineNumber: 97,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
@@ -3171,19 +3185,19 @@ const Body = ()=>{
                         time: 50
                     }, void 0, false, {
                         fileName: "index.js",
-                        lineNumber: 85,
+                        lineNumber: 103,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "index.js",
-                lineNumber: 48,
+                lineNumber: 66,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "index.js",
-        lineNumber: 46,
+        lineNumber: 64,
         columnNumber: 5
     }, undefined);
 };
@@ -3194,18 +3208,18 @@ const AppLayout = ()=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Header, {}, void 0, false, {
                 fileName: "index.js",
-                lineNumber: 99,
+                lineNumber: 117,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Body, {}, void 0, false, {
                 fileName: "index.js",
-                lineNumber: 100,
+                lineNumber: 118,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "index.js",
-        lineNumber: 98,
+        lineNumber: 116,
         columnNumber: 5
     }, undefined);
 };
@@ -3213,7 +3227,7 @@ _c3 = AppLayout;
 const root = (0, _reactDomDefault.default).createRoot(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(AppLayout, {}, void 0, false, {
     fileName: "index.js",
-    lineNumber: 106,
+    lineNumber: 124,
     columnNumber: 13
 }, undefined));
 var _c, _c1, _c2, _c3;
