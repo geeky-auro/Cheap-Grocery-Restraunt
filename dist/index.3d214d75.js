@@ -3044,65 +3044,131 @@ _c = Header;
 //     </div>
 //   );
 // };
-const RestrauntCard = (props)=>{
+const resObj = [
+    {
+        name: "Meghana Foods",
+        cuisines: "North India, Biriyani",
+        ratings: 3.3,
+        time: 30,
+        imageUrl: "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg"
+    },
+    {
+        name: "JugalBandi",
+        cuisines: "South India, Idli,Dosa",
+        ratings: 4.3,
+        time: 38,
+        imageUrl: "https://images.pexels.com/photos/262974/pexels-photo-262974.jpeg"
+    },
+    {
+        name: "Macha Foods",
+        cuisines: "North India, Shawarma",
+        ratings: 4.2,
+        time: 35,
+        imageUrl: "https://images.pexels.com/photos/262972/pexels-photo-262972.jpeg"
+    },
+    {
+        name: "Ravish Foods",
+        cuisines: "South India, Rajma, Paneer",
+        ratings: 4.5,
+        time: 40,
+        imageUrl: "https://images.pexels.com/photos/262971/pexels-photo-262971.jpeg"
+    },
+    {
+        name: "Rajdhani Foods",
+        cuisines: "South India, Pakora, Paneer",
+        ratings: 4.1,
+        time: 37,
+        imageUrl: "https://images.pexels.com/photos/262970/pexels-photo-262970.jpeg"
+    },
+    {
+        name: "Kormangala Foods",
+        cuisines: "South India, Dosa, Paneer",
+        ratings: 4.3,
+        time: 41,
+        imageUrl: "https://images.pexels.com/photos/262969/pexels-photo-262969.jpeg"
+    },
+    {
+        name: "Kulra Foods",
+        cuisines: "South India, Pakoda, Paratha",
+        ratings: 4.55,
+        time: 45,
+        imageUrl: "https://images.pexels.com/photos/262968/pexels-photo-262968.jpeg"
+    }
+];
+const RestrauntCard = ({ resData })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "res-card",
         style: styleCard,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                 className: "some-image",
-                src: "https://img.freepik.com/free-vector/detailed-chef-logo-template_23-2148986823.jpg"
+                src: resData.imageUrl
             }, void 0, false, {
                 fileName: "index.js",
-                lineNumber: 50,
+                lineNumber: 106,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                children: props.name
+                children: resData.name
             }, void 0, false, {
                 fileName: "index.js",
-                lineNumber: 54,
+                lineNumber: 107,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
                 children: [
                     "Cuisines : ",
-                    props.cuisines
+                    resData.cuisines
                 ]
             }, void 0, true, {
                 fileName: "index.js",
-                lineNumber: 55,
+                lineNumber: 108,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
                 children: [
                     "Ratings : ",
-                    props.ratings,
+                    resData.ratings,
                     " \uD83D\uDCAB"
                 ]
             }, void 0, true, {
                 fileName: "index.js",
-                lineNumber: 56,
+                lineNumber: 109,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
                 children: [
-                    props.time,
+                    resData.time,
                     " Minutes"
                 ]
             }, void 0, true, {
                 fileName: "index.js",
-                lineNumber: 57,
+                lineNumber: 110,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "index.js",
-        lineNumber: 49,
+        lineNumber: 105,
         columnNumber: 5
     }, undefined);
 };
 _c1 = RestrauntCard;
+// Another way to describe props
+// const RestrauntCard = (props) => {
+//   return (
+//     <div className="res-card" style={styleCard}>
+//       <img
+//         className="some-image"
+//         src="https://img.freepik.com/free-vector/detailed-chef-logo-template_23-2148986823.jpg"
+//       />
+//       <h3>{props.name}</h3>
+//       <h4>Cuisines : {props.cuisines}</h4>
+//       <h4>Ratings : {props.ratings} 💫</h4>
+//       <h4>{props.time} Minutes</h4>
+//     </div>
+//   );
+// };
 const Body = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "body",
@@ -3112,92 +3178,30 @@ const Body = ()=>{
                 children: "Search"
             }, void 0, false, {
                 fileName: "index.js",
-                lineNumber: 65,
+                lineNumber: 134,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "res-container",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
-                        name: "Meghana Foods",
-                        cuisines: "North India, Biriyani",
-                        ratings: 3.3,
-                        time: 30
+                children: resObj.map((res)=>{
+                    console.log(res);
+                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
+                        resData: res
                     }, void 0, false, {
                         fileName: "index.js",
-                        lineNumber: 67,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
-                        name: "JugalBandi",
-                        cuisines: "South India, Idli,Dosa",
-                        ratings: 4.3,
-                        time: 38
-                    }, void 0, false, {
-                        fileName: "index.js",
-                        lineNumber: 73,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
-                        name: "Macha Foods",
-                        cuisines: "North India, Shawarma",
-                        ratings: 4.8,
-                        time: 27
-                    }, void 0, false, {
-                        fileName: "index.js",
-                        lineNumber: 79,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
-                        name: "The Bengali Stall",
-                        cuisines: "East India, Momo",
-                        ratings: 5.0,
-                        time: 16
-                    }, void 0, false, {
-                        fileName: "index.js",
-                        lineNumber: 85,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
-                        name: "Go Green Beverages",
-                        cuisines: "East India, Rasagulla",
-                        ratings: 4.3,
-                        time: 40
-                    }, void 0, false, {
-                        fileName: "index.js",
-                        lineNumber: 91,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
-                        name: "Mughal Biriyanis",
-                        cuisines: " Italian, Fasoos",
-                        ratings: 4.2,
-                        time: 45
-                    }, void 0, false, {
-                        fileName: "index.js",
-                        lineNumber: 97,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
-                        name: "Namaste Khana",
-                        cuisines: "North India, Biriyani",
-                        ratings: 4.1,
-                        time: 50
-                    }, void 0, false, {
-                        fileName: "index.js",
-                        lineNumber: 103,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
+                        lineNumber: 138,
+                        columnNumber: 18
+                    }, undefined);
+                })
+            }, void 0, false, {
                 fileName: "index.js",
-                lineNumber: 66,
+                lineNumber: 135,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "index.js",
-        lineNumber: 64,
+        lineNumber: 133,
         columnNumber: 5
     }, undefined);
 };
@@ -3208,18 +3212,18 @@ const AppLayout = ()=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Header, {}, void 0, false, {
                 fileName: "index.js",
-                lineNumber: 117,
+                lineNumber: 148,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Body, {}, void 0, false, {
                 fileName: "index.js",
-                lineNumber: 118,
+                lineNumber: 149,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "index.js",
-        lineNumber: 116,
+        lineNumber: 147,
         columnNumber: 5
     }, undefined);
 };
@@ -3227,7 +3231,7 @@ _c3 = AppLayout;
 const root = (0, _reactDomDefault.default).createRoot(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(AppLayout, {}, void 0, false, {
     fileName: "index.js",
-    lineNumber: 124,
+    lineNumber: 155,
     columnNumber: 13
 }, undefined));
 var _c, _c1, _c2, _c3;

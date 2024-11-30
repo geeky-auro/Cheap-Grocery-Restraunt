@@ -41,71 +41,102 @@ const Header = () => {
 //   );
 // };
 
+const resObj = [
+  {
+    name: "Meghana Foods",
+    cuisines: "North India, Biriyani",
+    ratings: 3.3,
+    time: 30,
+    imageUrl:
+      "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg",
+  },
+  {
+    name: "JugalBandi",
+    cuisines: "South India, Idli,Dosa",
+    ratings: 4.3,
+    time: 38,
+    imageUrl:
+      "https://images.pexels.com/photos/262974/pexels-photo-262974.jpeg",
+  },
+  {
+    name: "Macha Foods",
+    cuisines: "North India, Shawarma",
+    ratings: 4.2,
+    time: 35,
+    imageUrl:
+      "https://images.pexels.com/photos/262972/pexels-photo-262972.jpeg",
+  },
+  {
+    name: "Ravish Foods",
+    cuisines: "South India, Rajma, Paneer",
+    ratings: 4.5,
+    time: 40,
+    imageUrl:
+      "https://images.pexels.com/photos/262971/pexels-photo-262971.jpeg",
+  },
+  {
+    name: "Rajdhani Foods",
+    cuisines: "South India, Pakora, Paneer",
+    ratings: 4.1,
+    time: 37,
+    imageUrl:
+      "https://images.pexels.com/photos/262970/pexels-photo-262970.jpeg",
+  },
+  {
+    name: "Kormangala Foods",
+    cuisines: "South India, Dosa, Paneer",
+    ratings: 4.3,
+    time: 41,
+    imageUrl:
+      "https://images.pexels.com/photos/262969/pexels-photo-262969.jpeg",
+  },
+  {
+    name: "Kulra Foods",
+    cuisines: "South India, Pakoda, Paratha",
+    ratings: 4.55,
+    time: 40 + 5,
+    imageUrl:
+      "https://images.pexels.com/photos/262968/pexels-photo-262968.jpeg",
+  },
+];
 
-
-
-const RestrauntCard = (props) => {
+const RestrauntCard = ({ resData }) => {
   return (
     <div className="res-card" style={styleCard}>
-      <img
-        className="some-image"
-        src="https://img.freepik.com/free-vector/detailed-chef-logo-template_23-2148986823.jpg"
-      />
-      <h3>{props.name}</h3>
-      <h4>Cuisines : {props.cuisines}</h4>
-      <h4>Ratings : {props.ratings} 💫</h4>
-      <h4>{props.time} Minutes</h4>
+      <img className="some-image" src={resData.imageUrl} />
+      <h3>{resData.name}</h3>
+      <h4>Cuisines : {resData.cuisines}</h4>
+      <h4>Ratings : {resData.ratings} 💫</h4>
+      <h4>{resData.time} Minutes</h4>
     </div>
   );
 };
+
+// Another way to describe props
+// const RestrauntCard = (props) => {
+//   return (
+//     <div className="res-card" style={styleCard}>
+//       <img
+//         className="some-image"
+//         src="https://img.freepik.com/free-vector/detailed-chef-logo-template_23-2148986823.jpg"
+//       />
+//       <h3>{props.name}</h3>
+//       <h4>Cuisines : {props.cuisines}</h4>
+//       <h4>Ratings : {props.ratings} 💫</h4>
+//       <h4>{props.time} Minutes</h4>
+//     </div>
+//   );
+// };
 
 const Body = () => {
   return (
     <div className="body">
       <div className="search">Search</div>
       <div className="res-container">
-        <RestrauntCard
-          name={"Meghana Foods"}
-          cuisines={"North India, Biriyani"}
-          ratings={3.3}
-          time={30}
-        />
-        <RestrauntCard
-          name={"JugalBandi"}
-          cuisines={"South India, Idli,Dosa"}
-          ratings={4.3}
-          time={38}
-        />
-        <RestrauntCard
-          name={"Macha Foods"}
-          cuisines={"North India, Shawarma"}
-          ratings={4.8}
-          time={27}
-        />
-        <RestrauntCard
-          name={"The Bengali Stall"}
-          cuisines={"East India, Momo"}
-          ratings={5.0}
-          time={16}
-        />
-        <RestrauntCard
-          name={"Go Green Beverages"}
-          cuisines={"East India, Rasagulla"}
-          ratings={4.3}
-          time={40}
-        />
-        <RestrauntCard
-          name={"Mughal Biriyanis"}
-          cuisines={" Italian, Fasoos"}
-          ratings={4.2}
-          time={45}
-        />
-        <RestrauntCard
-          name={"Namaste Khana"}
-          cuisines={"North India, Biriyani"}
-          ratings={4.1}
-          time={50}
-        />
+        {resObj.map((res) => {
+          console.log(res);
+          return <RestrauntCard resData={res} />;
+        })}
       </div>
     </div>
   );
