@@ -133,9 +133,9 @@ const Body = () => {
     <div className="body">
       <div className="search">Search</div>
       <div className="res-container">
-        {resObj.map((res) => {
+        {resObj.map((res, index) => {
           console.log(res);
-          return <RestrauntCard resData={res} />;
+          return <RestrauntCard key={index} resData={res} />;
         })}
       </div>
     </div>

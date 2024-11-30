@@ -3183,11 +3183,11 @@ const Body = ()=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "res-container",
-                children: resObj.map((res)=>{
+                children: resObj.map((res, index)=>{
                     console.log(res);
                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestrauntCard, {
                         resData: res
-                    }, void 0, false, {
+                    }, index, false, {
                         fileName: "index.js",
                         lineNumber: 138,
                         columnNumber: 18
