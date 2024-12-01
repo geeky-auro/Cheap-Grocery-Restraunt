@@ -89,18 +89,22 @@ const Body = () => {
     <Shimmer></Shimmer>
   ) : (
     <div className="body">
-      <button
-        className="filter-btn"
-        onClick={() => {
-          const filteredData = listRestraunts.filter(
-            (res) => res.rating >= 4.0
-          );
-          console.log(filteredData);
-          setListRestraunts(filteredData);
-        }}
-      >
-        Tops Rated Restraunts
-      </button>
+      <div className="filter">
+        <input type="text" placeholder="Enter Item to be Searched" />
+        <button>Search</button>
+        <button
+          className="filter-btn"
+          onClick={() => {
+            const filteredData = listRestraunts.filter(
+              (res) => res.rating >= 4.0
+            );
+            console.log(filteredData);
+            setListRestraunts(filteredData);
+          }}
+        >
+          Tops Rated Restraunts
+        </button>
+      </div>
       <div className="res-container">
         {listRestraunts.map((res, index) => {
           console.log(res);

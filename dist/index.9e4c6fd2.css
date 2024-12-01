@@ -72,4 +72,10 @@
   cursor: pointer;
   padding: 0 20px;
 }
+
+.filter {
+  margin-top: 2px;
+  padding: 2px;
+  display: flex;
+}
 /*# sourceMappingURL=index.9e4c6fd2.css.map */
