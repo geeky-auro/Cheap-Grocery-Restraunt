@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import RestrauntCard from "./RestrauntCard";
+import Shimmer from "./Shimmer";
 
 let resObj = [
   {
@@ -60,26 +62,72 @@ let resObj = [
 ];
 
 const Body = () => {
-  // Add your code here to filter the top rated restraunts based on ratings and time.
+  const [listRestraunts, setListRestraunts] = useState([]);
+  const [searchText, setsearchText] = useState([]);
+  const [filterText, setFilterText] = useState([]);
+  useEffect(() => {
+    console.log("Body is rendered successfully");
+    fetchData();
+  }, []);
 
+  someData = [];
+
+  const fetchData = async () => {
+    // Replace with your API endpoint to fetch the restraunt data
+    const response = await fetch("https://dummyjson.com/products");
+    const data = await response.json();
+    console.log(data.products);
+    setListRestraunts(data?.products);
+    setFilterText(data?.products);
+  };
+  // Add your code here to filter the top rated restraunts based on ratings and time.
   // Example:
   // const filteredRes = resObj.filter((res) => res.ratings >= 4.5 && res.time <= 45);
-
   // Return the filtered restraunts instead of resObj in the return statement.
   console.log(resObj);
-  return (
+  if (listRestraunts.length === 0) {
+    return <Shimmer></Shimmer>;
+  }
+  return listRestraunts.length === 0 ? (
+    <Shimmer></Shimmer>
+  ) : (
     <div className="body">
-      <button
-        className="filter-btn"
-        onClick={() => {
-          resObj = resObj.filter((res) => res.ratings >= 4.0);
-          console.log(resObj);
-        }}
-      >
-        Tops Rated Restraunts
-      </button>
+      <div className="filter">
+        <input
+          type="text"
+          placeholder="Enter Item to be Searched"
+          value={searchText}
+          onChange={(e) => {
+            setsearchText(e.target.value);
+          }}
+        />
+        <button
+          onClick={() => {
+            console.log(searchText);
+            const filteredItems = listRestraunts.filter((res) =>
+              res.title.toLowerCase().includes(searchText.toLowerCase())
+            );
+            // setListRestraunts(filteredItems);
+            setFilterText(filteredItems);
+          }}
+        >
+          Search
+        </button>
+        <button
+          className="filter-btn"
+          onClick={() => {
+            const filteredData = listRestraunts.filter(
+              (res) => res.rating >= 4.0
+            );
+            console.log(filteredData);
+            setListRestraunts(filteredData);
+          }}
+        >
+          Tops Rated Restraunts
+        </button>
+      </div>
       <div className="res-container">
-        {resObj.map((res, index) => {
+        {filterText.map((res, index) => {
           console.log(res);
           return <RestrauntCard key={index} resData={res} />;
         })}
