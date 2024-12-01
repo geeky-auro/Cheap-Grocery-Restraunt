@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import RestrauntCard from "./RestrauntCard";
+import Shimmer from "./Shimmer";
 
 let resObj = [
   {
@@ -60,26 +62,45 @@ let resObj = [
 ];
 
 const Body = () => {
-  // Add your code here to filter the top rated restraunts based on ratings and time.
+  const [listRestraunts, setListRestraunts] = useState([]);
+  useEffect(() => {
+    console.log("Body is rendered successfully");
+    fetchData();
+  }, []);
 
+  someData = [];
+
+  const fetchData = async () => {
+    // Replace with your API endpoint to fetch the restraunt data
+    const response = await fetch("https://dummyjson.com/products");
+    const data = await response.json();
+    console.log(data.products);
+    setListRestraunts(data?.products);
+  };
+  // Add your code here to filter the top rated restraunts based on ratings and time.
   // Example:
   // const filteredRes = resObj.filter((res) => res.ratings >= 4.5 && res.time <= 45);
-
   // Return the filtered restraunts instead of resObj in the return statement.
   console.log(resObj);
+  if (listRestraunts.length === 0) {
+    return <Shimmer></Shimmer>;
+  }
   return (
     <div className="body">
       <button
         className="filter-btn"
         onClick={() => {
-          resObj = resObj.filter((res) => res.ratings >= 4.0);
-          console.log(resObj);
+          const filteredData = listRestraunts.filter(
+            (res) => res.rating >= 4.0
+          );
+          console.log(filteredData);
+          setListRestraunts(filteredData);
         }}
       >
         Tops Rated Restraunts
       </button>
       <div className="res-container">
-        {resObj.map((res, index) => {
+        {listRestraunts.map((res, index) => {
           console.log(res);
           return <RestrauntCard key={index} resData={res} />;
         })}
