@@ -63,6 +63,8 @@ let resObj = [
 
 const Body = () => {
   const [listRestraunts, setListRestraunts] = useState([]);
+  const [searchText, setsearchText] = useState([]);
+  const [filterText, setFilterText] = useState([]);
   useEffect(() => {
     console.log("Body is rendered successfully");
     fetchData();
@@ -76,6 +78,7 @@ const Body = () => {
     const data = await response.json();
     console.log(data.products);
     setListRestraunts(data?.products);
+    setFilterText(data?.products);
   };
   // Add your code here to filter the top rated restraunts based on ratings and time.
   // Example:
@@ -90,8 +93,26 @@ const Body = () => {
   ) : (
     <div className="body">
       <div className="filter">
-        <input type="text" placeholder="Enter Item to be Searched" />
-        <button>Search</button>
+        <input
+          type="text"
+          placeholder="Enter Item to be Searched"
+          value={searchText}
+          onChange={(e) => {
+            setsearchText(e.target.value);
+          }}
+        />
+        <button
+          onClick={() => {
+            console.log(searchText);
+            const filteredItems = listRestraunts.filter((res) =>
+              res.title.toLowerCase().includes(searchText.toLowerCase())
+            );
+            // setListRestraunts(filteredItems);
+            setFilterText(filteredItems);
+          }}
+        >
+          Search
+        </button>
         <button
           className="filter-btn"
           onClick={() => {
@@ -106,7 +127,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {listRestraunts.map((res, index) => {
+        {filterText.map((res, index) => {
           console.log(res);
           return <RestrauntCard key={index} resData={res} />;
         })}
