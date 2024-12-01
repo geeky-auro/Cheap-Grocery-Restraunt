@@ -1,10 +1,10 @@
 import RestrauntCard from "./RestrauntCard";
 
-const resObj = [
+let resObj = [
   {
     name: "Meghana Foods",
     cuisines: "North India, Biriyani",
-    ratings: 3.3,
+    ratings: 4.3,
     time: 30,
     imageUrl:
       "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg",
@@ -12,7 +12,7 @@ const resObj = [
   {
     name: "JugalBandi",
     cuisines: "South India, Idli,Dosa",
-    ratings: 4.3,
+    ratings: 3.3,
     time: 38,
     imageUrl:
       "https://images.pexels.com/photos/262974/pexels-photo-262974.jpeg",
@@ -20,7 +20,7 @@ const resObj = [
   {
     name: "Macha Foods",
     cuisines: "North India, Shawarma",
-    ratings: 4.2,
+    ratings: 3.2,
     time: 35,
     imageUrl:
       "https://images.pexels.com/photos/262972/pexels-photo-262972.jpeg",
@@ -28,7 +28,7 @@ const resObj = [
   {
     name: "Ravish Foods",
     cuisines: "South India, Rajma, Paneer",
-    ratings: 4.5,
+    ratings: 3.5,
     time: 40,
     imageUrl:
       "https://images.pexels.com/photos/262971/pexels-photo-262971.jpeg",
@@ -60,9 +60,24 @@ const resObj = [
 ];
 
 const Body = () => {
+  // Add your code here to filter the top rated restraunts based on ratings and time.
+
+  // Example:
+  // const filteredRes = resObj.filter((res) => res.ratings >= 4.5 && res.time <= 45);
+
+  // Return the filtered restraunts instead of resObj in the return statement.
+  console.log(resObj);
   return (
     <div className="body">
-      <div className="search">Search</div>
+      <button
+        className="filter-btn"
+        onClick={() => {
+          resObj = resObj.filter((res) => res.ratings >= 4.0);
+          console.log(resObj);
+        }}
+      >
+        Tops Rated Restraunts
+      </button>
       <div className="res-container">
         {resObj.map((res, index) => {
           console.log(res);
