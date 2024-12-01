@@ -85,7 +85,9 @@ const Body = () => {
   if (listRestraunts.length === 0) {
     return <Shimmer></Shimmer>;
   }
-  return (
+  return listRestraunts.length === 0 ? (
+    <Shimmer></Shimmer>
+  ) : (
     <div className="body">
       <button
         className="filter-btn"
