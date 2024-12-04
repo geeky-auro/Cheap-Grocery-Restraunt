@@ -5,6 +5,7 @@ import Body from "./components/Body";
 import {
   BrowserRouter,
   createBrowserRouter,
+  Outlet,
   RouterProvider,
 } from "react-router-dom";
 import About from "./components/About";
@@ -46,7 +47,7 @@ const AppLayout = () => {
   return (
     <div className="App">
       <Header />
-      <Body />
+      <Outlet />
     </div>
   );
 };
@@ -56,16 +57,22 @@ const appRouter = createBrowserRouter([
     path: "/",
     element: <AppLayout />,
     errorElement: <Error />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-    errorElement: <Error />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
-    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+        errorElement: <Error />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+        errorElement: <Error />,
+      },
+    ],
   },
 ]);
 
