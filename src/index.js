@@ -11,7 +11,7 @@ import {
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import RestaurantMenu from "./components/RestaurantMenu"
+import RestaurantMenu from "./components/RestaurantMenu";
 
 // const RestrauntCard = ({ ...rest }) => {
 //   return (
@@ -74,9 +74,10 @@ const appRouter = createBrowserRouter([
         errorElement: <Error />,
       },
       {
-        path: "/restaurants/:resId",
-        element: <RestaurantMenu />
-      }
+        path: "/grocery/:grossId",
+        element: <RestaurantMenu />,
+        errorElement: <Error />,
+      },
     ],
   },
 ]);

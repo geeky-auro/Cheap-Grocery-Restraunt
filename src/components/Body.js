@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RestrauntCard from "./RestrauntCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 let resObj = [
   {
@@ -127,9 +128,14 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {filterText.map((res, index) => {
+        {filterText.map((res) => {
           console.log(res);
-          return <RestrauntCard key={index} resData={res} />;
+          return (
+            // Key should be always on parent element.
+            <Link key={res.id} to={"/grocery/" + res.id}>
+              <RestrauntCard resData={res} />
+            </Link>
+          );
         })}
       </div>
     </div>

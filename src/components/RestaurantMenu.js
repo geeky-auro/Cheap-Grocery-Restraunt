@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { useParams } from "react-router-dom";
 
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
@@ -8,12 +9,14 @@ const RestaurantMenu = () => {
     fetchMenu();
   }, []);
 
+  const { grossId } = useParams();
+
   const fetchMenu = async () => {
-    const data = await fetch("https://dummyjson.com/products");
+    const data = await fetch("https://dummyjson.com/products/" + grossId);
     const json = await data.json();
     console.log(json);
     // Will return array of objects which will be holding different grocery items
-    setResInfo(json.products);
+    setResInfo(json);
   };
 
   // Destructuring the data to access specific properties more easily
@@ -28,7 +31,7 @@ const RestaurantMenu = () => {
     rating,
     warrantyInformation,
     returnPolicy,
-  } = resInfo == null ? <Shimmer /> : resInfo[0] || {}; // Safely handle `null` or `undefined` for `resInfo`
+  } = resInfo == null ? <Shimmer /> : resInfo || {}; // Safely handle `null` or `undefined` for `resInfo`
 
   return resInfo == null ? (
     <Shimmer />
@@ -37,7 +40,7 @@ const RestaurantMenu = () => {
       <h1>{title}</h1>
       <h2>{description}</h2>
       <ul>
-        <li>Product description: {resInfo[0].description}</li>
+        <li>Product description: {description}</li>
         <li>Category: {category}</li>
         <li>Price: {price}</li>
         <li>Ratings: {rating}</li>
