@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RestrauntCard from "./RestrauntCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 let resObj = [
   {
@@ -85,6 +86,11 @@ const Body = () => {
   // Example:
   // const filteredRes = resObj.filter((res) => res.ratings >= 4.5 && res.time <= 45);
   // Return the filtered restraunts instead of resObj in the return statement.
+  const isOnline = useOnlineStatus();
+  if (isOnline === "false") {
+    return <h1>No Internet Connection</h1>;
+  }
+
   console.log(resObj);
   if (listRestraunts.length === 0) {
     return <Shimmer></Shimmer>;
