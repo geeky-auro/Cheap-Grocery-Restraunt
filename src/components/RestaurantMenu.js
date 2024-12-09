@@ -1,23 +1,14 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  // const [resInfo, setResInfo] = useState(null);
 
   const { grossId } = useParams();
 
-  const fetchMenu = async () => {
-    const data = await fetch("https://dummyjson.com/products/" + grossId);
-    const json = await data.json();
-    console.log(json);
-    // Will return array of objects which will be holding different grocery items
-    setResInfo(json);
-  };
+  const resInfo = useRestaurantMenu(grossId);
 
   // Destructuring the data to access specific properties more easily
   // Instead of using them as resInfo[0].name,................................................................
