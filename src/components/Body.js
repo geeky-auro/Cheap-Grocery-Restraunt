@@ -104,11 +104,13 @@ const Body = () => {
           type="text"
           placeholder="Enter Item to be Searched"
           value={searchText}
+          className="search m-4 p-4 border border-solid border-black rounded-md"
           onChange={(e) => {
             setsearchText(e.target.value);
           }}
         />
         <button
+          className="m-4 p-4 bg-green-500 shadow-lg rounded"
           onClick={() => {
             console.log(searchText);
             const filteredItems = listRestraunts.filter((res) =>
@@ -121,7 +123,7 @@ const Body = () => {
           Search
         </button>
         <button
-          className="filter-btn"
+          className="m-4 p-4 bg-blue-500 shadow-lg rounded"
           onClick={() => {
             const filteredData = listRestraunts.filter(
               (res) => res.rating >= 4.0
@@ -130,10 +132,10 @@ const Body = () => {
             setListRestraunts(filteredData);
           }}
         >
-          Tops Rated Restraunts
+          Top Rated Grocery Items
         </button>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap m-4 p-4">
         {filterText.map((res) => {
           console.log(res);
           return (
