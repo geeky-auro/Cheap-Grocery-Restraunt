@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestrauntCard from "./RestrauntCard";
+import RestrauntCard, { CategoryCardBeauty } from "./RestrauntCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -72,8 +72,6 @@ const Body = () => {
     fetchData();
   }, []);
 
-  someData = [];
-
   const fetchData = async () => {
     // Replace with your API endpoint to fetch the restraunt data
     const response = await fetch("https://dummyjson.com/products");
@@ -141,7 +139,11 @@ const Body = () => {
           return (
             // Key should be always on parent element.
             <Link key={res.id} to={"/grocery/" + res.id}>
-              <RestrauntCard resData={res} />
+              {res.category.includes("beauty") ? (
+                <CategoryCardBeauty resData={res} />
+              ) : (
+                <RestrauntCard resData={res} />
+              )}
             </Link>
           );
         })}
