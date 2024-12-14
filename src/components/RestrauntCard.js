@@ -12,7 +12,6 @@ const RestrauntCard = ({ resData }) => {
 };
 
 export const CategoryCardBeauty = (RestrauntCard) => {
-  console.log("Inside Beauty Category Card");
   return (props) => {
     return (
       <>
