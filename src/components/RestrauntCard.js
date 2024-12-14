@@ -12,14 +12,15 @@ const RestrauntCard = ({ resData }) => {
 };
 
 export const CategoryCardBeauty = (RestrauntCard) => {
-  return (res) => (
-    <div>
-      <h3 className="m-4 p-4 bg-black text-white rounded-lg">
-        Beauty ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae
-      </h3>
-      <RestrauntCard {...res} />
-    </div>
-  );
+  console.log("Inside Beauty Category Card");
+  return (props) => {
+    return (
+      <>
+        <label className="m-4 p-4 bg-black text-white rounded-lg">Beauty</label>
+        <RestrauntCard {...props} />
+      </>
+    );
+  };
 };
 
 export default RestrauntCard;

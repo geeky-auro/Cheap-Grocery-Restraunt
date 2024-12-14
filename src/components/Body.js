@@ -90,6 +90,7 @@ const Body = () => {
   }
 
   console.log(resObj);
+  const GroceryCardPromoted = CategoryCardBeauty(RestrauntCard);
   if (listRestraunts.length === 0) {
     return <Shimmer></Shimmer>;
   }
@@ -139,9 +140,10 @@ const Body = () => {
           return (
             // Key should be always on parent element.
             <Link key={res.id} to={"/grocery/" + res.id}>
-              {res.category.includes("beauty") ? (
-                <CategoryCardBeauty resData={res} />
+              {res.category === "beauty" ? (
+                <GroceryCardPromoted resData={res} />
               ) : (
+                // <h1> Something to be rendered !</h1>
                 <RestrauntCard resData={res} />
               )}
             </Link>
