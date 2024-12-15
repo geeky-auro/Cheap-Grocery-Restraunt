@@ -140,7 +140,7 @@ const Body = () => {
           return (
             // Key should be always on parent element.
             <Link key={res.id} to={"/grocery/" + res.id}>
-              {res.category === "beauty" ? (
+              {res.category.includes("beauty") ? (
                 <GroceryCardPromoted resData={res} />
               ) : (
                 // <h1> Something to be rendered !</h1>

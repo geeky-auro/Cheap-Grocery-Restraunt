@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import GroceryReviews from "./GroceryReviews";
 
 const RestaurantMenu = () => {
   // const [resInfo, setResInfo] = useState(null);
@@ -22,13 +23,17 @@ const RestaurantMenu = () => {
     rating,
     warrantyInformation,
     returnPolicy,
+    reviews,
   } = resInfo == null ? <Shimmer /> : resInfo || {}; // Safely handle `null` or `undefined` for `resInfo`
 
+  // Create a Accordian for Tags and Reviews .. !
+
+  console.log(resInfo?.reviews);
   return resInfo == null ? (
     <Shimmer />
   ) : (
     <div className="menu">
-      <h1>{title}</h1>
+      <h1 className="font-bold my-10 text-2xl">{title}</h1>
       <h2>{description}</h2>
       <ul>
         <li>Product description: {description}</li>
@@ -41,6 +46,8 @@ const RestaurantMenu = () => {
             Hint: Use Map method for iterating ;)
         */}
       </ul>
+      {/* Accordian for Reviews and Tags ;) */}
+      <GroceryReviews data={reviews} />
     </div>
   );
 };
