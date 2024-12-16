@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import ReviewList from "./ReviewList";
-const GroceryReviews = ({ data }) => {
+const GroceryReviews = ({ data, showItems, onShow }) => {
   console.log("WelcomeReviews");
   console.log(data);
-  const [showItems, setShowItems] = useState(false);
   const handleClick = () => {
-    setShowItems(!showItems);
+    onShow();
   };
   return (
     <div>

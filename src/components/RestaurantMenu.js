@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import GroceryReviews from "./GroceryReviews";
+import GroceryTags from "./GroceryTags";
 
 const RestaurantMenu = () => {
   // const [resInfo, setResInfo] = useState(null);
@@ -10,6 +11,8 @@ const RestaurantMenu = () => {
   const { grossId } = useParams();
 
   const resInfo = useRestaurantMenu(grossId);
+
+  const [activeIndex, setActiveIndex] = useState(0);
 
   // Destructuring the data to access specific properties more easily
   // Instead of using them as resInfo[0].name,................................................................
@@ -24,11 +27,14 @@ const RestaurantMenu = () => {
     warrantyInformation,
     returnPolicy,
     reviews,
+    tags,
   } = resInfo == null ? <Shimmer /> : resInfo || {}; // Safely handle `null` or `undefined` for `resInfo`
+
+  const [showItems, setShowItems] = useState(false);
 
   // Create a Accordian for Tags and Reviews .. !
 
-  console.log(resInfo?.reviews);
+  console.log(resInfo);
   return resInfo == null ? (
     <Shimmer />
   ) : (
@@ -47,7 +53,20 @@ const RestaurantMenu = () => {
         */}
       </ul>
       {/* Accordian for Reviews and Tags ;) */}
-      <GroceryReviews data={reviews} />
+      <GroceryReviews
+        data={reviews}
+        showItems={activeIndex === 0}
+        onShow={() => {
+          setActiveIndex(0);
+        }}
+      />
+      <GroceryTags
+        data={tags}
+        showItems={activeIndex === 1}
+        onShow={() => {
+          setActiveIndex(1);
+        }}
+      />
     </div>
   );
 };
