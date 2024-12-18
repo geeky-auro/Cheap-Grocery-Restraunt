@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 const Header = () => {
   const [login, setLogin] = useState("Login");
+  const currentUser = useContext(UserContext);
+  console.log(currentUser);
+  const { loggedinUser } = currentUser || {};
 
   return (
     <div className="flex justify-between shadow-lg">
@@ -23,15 +27,18 @@ const Header = () => {
           <li className="px-4">
             <Link to="/">Cart</Link>
           </li>
-          <button
-            className="login"
-            onClick={() => {
-              setLogin(login === "Login" ? "Logout" : "Login");
-              // Add logout functionality here
-            }}
-          >
-            {login}
-          </button>
+          <li>
+            <button
+              className="login"
+              onClick={() => {
+                setLogin(login === "Login" ? "Logout" : "Login");
+                // Add logout functionality here
+              }}
+            >
+              {login}
+            </button>
+          </li>
+          <li className="mx-2">{loggedinUser}</li>
         </ul>
       </div>
     </div>

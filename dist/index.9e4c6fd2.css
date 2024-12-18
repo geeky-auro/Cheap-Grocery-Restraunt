@@ -271,6 +271,11 @@ img, video {
   margin-bottom: 1rem;
 }
 
+.mx-2 {
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -405,6 +410,10 @@ img, video {
 
 .font-bold {
   font-weight: 700;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .text-pink-700 {
