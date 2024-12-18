@@ -13,6 +13,13 @@ const RestaurantMenu = () => {
   const resInfo = useRestaurantMenu(grossId);
 
   const [activeIndex, setActiveIndex] = useState(0);
+  // TODO: Use the below states to complete the assignment ,
+  // If you run the application, you will notice that the current accordian which is open 
+  // Will not get closed ...! 
+  // It only closes when another accordian is opened..!
+  const [isAlreadyNotOpen, setIsAlreadyOpen] = useState(false);
+  const [isAlreadyGriceryReviewsNotOpen, setisAlreadyGriceryReviewsNotOpen] =
+    useState(false);
 
   // Destructuring the data to access specific properties more easily
   // Instead of using them as resInfo[0].name,................................................................
