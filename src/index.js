@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -6,7 +6,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
-
+import UserContext from "./utils/UserContext";
 // const RestrauntCard = ({ ...rest }) => {
 //   return (
 //     <div className="res-card" style={styleCard}>
@@ -41,11 +41,28 @@ import RestaurantMenu from "./components/RestaurantMenu";
 const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
+  const [userInfo, setUserInfo] = useState();
+
+  useEffect(() => {
+    const data = {
+      name: "John Doe",
+      email: "john@example.com",
+      phone: "1234567890",
+    };
+    setUserInfo(data.name);
+  }, []);
+
   return (
-    <div className="App">
-      <Header />
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{ loggedinUser: userInfo }}>
+      {/* Whole app with default */}
+      <div className="App">
+        <UserContext.Provider value={{ loggedinUser: "Elon Musk" }}>
+          {/* Only header with Elon Musk  */}
+          <Header />
+        </UserContext.Provider>
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 
