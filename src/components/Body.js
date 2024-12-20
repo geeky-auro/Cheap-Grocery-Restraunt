@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RestrauntCard, { CategoryCardBeauty } from "./RestrauntCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 let resObj = [
   {
@@ -89,6 +90,8 @@ const Body = () => {
     return <h1>No Internet Connection</h1>;
   }
 
+  const { setUserInfo } = useContext(UserContext);
+
   console.log(resObj);
   const GroceryCardPromoted = CategoryCardBeauty(RestrauntCard);
   if (listRestraunts.length === 0) {
@@ -133,6 +136,11 @@ const Body = () => {
         >
           Top Rated Grocery Items
         </button>
+        <input
+          type="text"
+          className="p-4 border border-solid border-black"
+          onChange={(e) => setUserInfo(e.target.value)}
+        />
       </div>
       <div className="flex flex-wrap m-4 p-4">
         {filterText.map((res) => {

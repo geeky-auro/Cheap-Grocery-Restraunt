@@ -53,13 +53,10 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedinUser: userInfo }}>
+    <UserContext.Provider value={{ loggedinUser: userInfo, setUserInfo }}>
       {/* Whole app with default */}
       <div className="App">
-        <UserContext.Provider value={{ loggedinUser: "Elon Musk" }}>
-          {/* Only header with Elon Musk  */}
-          <Header />
-        </UserContext.Provider>
+        <Header />
         <Outlet />
       </div>
     </UserContext.Provider>
