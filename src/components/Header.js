@@ -2,11 +2,15 @@ import { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 const Header = () => {
   const [login, setLogin] = useState("Login");
   const currentUser = useContext(UserContext);
   console.log(currentUser);
   const { loggedinUser } = currentUser || {};
+
+  // Subscribing to the store using a selector
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="flex justify-between shadow-lg">
@@ -25,7 +29,7 @@ const Header = () => {
             <Link to="/contact">Contact Us</Link>
           </li>
           <li className="px-4">
-            <Link to="/">Cart</Link>
+            <Link to="/cart">Cart - {cartItems.length} Items</Link>
           </li>
           <li>
             <button
