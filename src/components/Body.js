@@ -4,6 +4,8 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 let resObj = [
   {
@@ -90,6 +92,13 @@ const Body = () => {
     return <h1>No Internet Connection</h1>;
   }
 
+  const dispatch = useDispatch();
+  const addItemToCart = (res) => {
+    // add Item to the cart ;)
+    // dispatch an action
+    dispatch(addItem(res));
+  };
+
   const { setUserInfo } = useContext(UserContext);
 
   console.log(resObj);
@@ -142,21 +151,32 @@ const Body = () => {
           onChange={(e) => setUserInfo(e.target.value)}
         />
       </div>
-      <div className="flex flex-wrap m-4 p-4">
-        {filterText.map((res) => {
-          console.log(res);
-          return (
-            // Key should be always on parent element.
-            <Link key={res.id} to={"/grocery/" + res.id}>
-              {res.category.includes("beauty") ? (
-                <GroceryCardPromoted resData={res} />
-              ) : (
-                // <h1> Something to be rendered !</h1>
-                <RestrauntCard resData={res} />
-              )}
-            </Link>
-          );
-        })}
+      <div>
+        <div className="flex flex-wrap m-4 p-4">
+          {filterText.map((res) => {
+            console.log(res);
+            return (
+              <div>
+                <button
+                  type="button"
+                  onClick={() => addItemToCart(res)}
+                  className="p-4 m-4 to-black align-middle rounded-sm border border-black shadow-lg  bg-yellow-100"
+                >
+                  Add
+                </button>
+                {/* Key should be always on parent element.*/}
+                <Link key={res.id} to={"/grocery/" + res.id}>
+                  {res.category.includes("beauty") ? (
+                    <GroceryCardPromoted resData={res} />
+                  ) : (
+                    // <h1> Something to be rendered !</h1>
+                    <RestrauntCard resData={res} />
+                  )}
+                </Link>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

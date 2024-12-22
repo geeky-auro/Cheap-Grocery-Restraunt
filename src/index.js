@@ -7,6 +7,9 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 // const RestrauntCard = ({ ...rest }) => {
 //   return (
 //     <div className="res-card" style={styleCard}>
@@ -53,13 +56,14 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedinUser: userInfo, setUserInfo }}>
-      {/* Whole app with default */}
-      <div className="App">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedinUser: userInfo, setUserInfo }}>
+        <div className="App">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -91,6 +95,10 @@ const appRouter = createBrowserRouter([
         path: "/grocery/:grossId",
         element: <RestaurantMenu />,
         errorElement: <Error />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },
