@@ -1,9 +1,22 @@
-import React from 'react'
+import React from "react";
 
 const Contact = () => {
   return (
-    <div>Contact Us Page</div>
-  )
-}
+    <div>
+      <h1 className="font-bold text-3xl p-4 m-4">Contact Us Page</h1>
+      <input
+        type="text"
+        placeholder="name"
+        className="border border-black p-2 m-2"
+      />
+      <input
+        type="text"
+        placeholder="message"
+        className="border border-black p-2 m-2"
+      />
+      <button className="bg-blue-500 text-white p-2 m-2 rounded">Submit</button>
+    </div>
+  );
+};
 
 export default Contact;
