@@ -68,7 +68,7 @@ let resObj = [
 
 const Body = () => {
   const [listRestraunts, setListRestraunts] = useState([]);
-  const [searchText, setsearchText] = useState([]);
+  const [searchText, setsearchText] = useState("");
   const [filterText, setFilterText] = useState([]);
   useEffect(() => {
     console.log("Body is rendered successfully");
@@ -122,6 +122,7 @@ const Body = () => {
         />
         <button
           className="m-4 p-4 bg-green-500 shadow-lg rounded"
+          data-testid="searchButton"
           onClick={() => {
             console.log(searchText);
             const filteredItems = listRestraunts.filter((res) =>
@@ -147,6 +148,7 @@ const Body = () => {
         </button>
         <input
           type="text"
+          data-testid="searchId"
           className="p-4 border border-solid border-black"
           onChange={(e) => setUserInfo(e.target.value)}
         />
